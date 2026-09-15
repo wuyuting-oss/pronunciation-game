@@ -198,19 +198,7 @@
   let currentWordIndex = 0;
 
 
-  // 🔊 播放單字發音
-  function speakWord() {
-
-    const word = words[currentWordIndex];
-
-    const speech =
-      new SpeechSynthesisUtterance(word);
-
-    speech.lang = "en-US";
-    speech.rate = 0.8;
-
-    window.speechSynthesis.speak(speech);
-  }
+  
   // 🔊 播放單字發音
   function speakWord() {
     const word = words[currentWordIndex];
@@ -309,11 +297,7 @@
     "❌ Try again!<br>You said: " + spokenWord;
 
 }
-    document.getElementById("result").innerHTML =
-      "❌ Try again!<br>You said: " + spokenWord;
-
-  }
-
+  
 };
 
 
