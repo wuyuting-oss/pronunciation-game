@@ -303,10 +303,10 @@
     // 發生錯誤
     recognition.onerror = function(event) {
 
-      document.getElementById("result").textContent =
-        "Please try again.";
+  document.getElementById("result").textContent =
+    "Error: " + event.error;
 
-    };
+};
 
 
     recognition.start();
