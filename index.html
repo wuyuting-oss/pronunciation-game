@@ -107,9 +107,9 @@
 
     <p>Read the word aloud to reveal the mystery picture!</p>
 
-    <div class="word">
-      popular
-    </div>
+    <div class="word" id="wordDisplay">
+  popular
+</div>
 
     <button class="listen-button" onclick="speakWord()">
       🔊 Listen
@@ -169,7 +169,7 @@
 
   // 🔊 播放單字發音
   function speakWord() {
-    const word = "popular";
+    const word = words[currentWordIndex];
 
     const speech = new SpeechSynthesisUtterance(word);
     speech.lang = "en-US";
@@ -216,7 +216,7 @@
       .toLowerCase()
       .trim();
 
-  const targetWord = "popular";
+  const targetWord = words[currentWordIndex].toLowerCase();
 
   if (spokenWord === targetWord) {
 
@@ -251,7 +251,34 @@
   }
 
 </script>
-  
+  const words = [
+  "popular",
+  "travel",
+  "culture",
+  "snack",
+  "local",
+  "special",
+  "picture",
+  "market",
+  "family",
+  "country",
+  "people",
+  "student",
+  "teacher",
+  "English",
+  "school",
+  "friend",
+  "music",
+  "movie",
+  "happy",
+  "summer",
+  "beautiful",
+  "interesting",
+  "different",
+  "favorite"
+];
+
+let currentWordIndex = 0;
 </body>
 
 </html>
