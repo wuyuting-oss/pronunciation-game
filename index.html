@@ -218,17 +218,53 @@
 
   const targetWord = words[currentWordIndex].toLowerCase();
 
-  if (spokenWord === targetWord) {
+ if (spokenWord === targetWord) {
 
-    document.getElementById("result").innerHTML =
-      "✅ Correct!<br>You said: " + spokenWord;
+  document.getElementById("result").innerHTML =
+    "✅ Correct!<br>You said: " + spokenWord;
 
-    // 揭開第一格
-    const covers = document.querySelectorAll(".cover");
-    covers[0].classList.add("revealed");
+  // 找到24個遮罩
+  const covers = document.querySelectorAll(".cover");
+
+  // 揭開目前這一題對應的格子
+  covers[currentWordIndex].classList.add("revealed");
+
+  // 前往下一個單字
+  currentWordIndex++;
+
+  // 如果還有下一題
+  if (currentWordIndex < words.length) {
+
+    setTimeout(function() {
+
+      document.getElementById("wordDisplay").textContent =
+        words[currentWordIndex];
+
+      document.getElementById("result").textContent = "";
+
+    }, 1000);
 
   } else {
 
+    // 24題全部完成
+    setTimeout(function() {
+
+      document.getElementById("wordDisplay").textContent =
+        "🎉 Congratulations!";
+
+      document.getElementById("result").innerHTML =
+        "You completed all 24 words!";
+
+    }, 1000);
+
+  }
+
+} else {
+
+  document.getElementById("result").innerHTML =
+    "❌ Try again!<br>You said: " + spokenWord;
+
+}
     document.getElementById("result").innerHTML =
       "❌ Try again!<br>You said: " + spokenWord;
 
