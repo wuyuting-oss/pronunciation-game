@@ -56,18 +56,44 @@
     }
 
     .picture-box {
-      margin-top: 30px;
-      height: 250px;
-      background-color: #dfe6e9;
-      border-radius: 15px;
+  position: relative;
+  width: 100%;
+  height: 350px;
+  margin-top: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.mystery-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-      color: #636e72;
-      font-size: 20px;
-    }
+.cover-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.cover {
+  background-color: #34495e;
+  border: 2px solid white;
+  box-sizing: border-box;
+  transition: opacity 0.6s ease;
+}
+
+.cover.revealed {
+  opacity: 0;
+}
 
   </style>
 </head>
@@ -96,8 +122,46 @@
     <p id="result"></p>
 
     <div class="picture-box">
-      Mystery Picture
-    </div>
+
+  <img src="mystery.jpg" class="mystery-image">
+
+  <div class="cover-grid">
+
+    <!-- 第1行：6格 -->
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+
+    <!-- 第2行：6格 -->
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+
+    <!-- 第3行：6格 -->
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+
+    <!-- 第4行：6格 -->
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+    <div class="cover"></div>
+
+  </div>
+
+</div>
 
   </div>
 
