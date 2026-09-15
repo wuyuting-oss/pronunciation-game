@@ -89,9 +89,11 @@
       🔊 Listen
     </button>
 
-    <button class="speak-button">
-      🎤 Say the Word
+    <button class="speak-button" onclick="startListening()">
+  🎤 Say the Word
     </button>
+
+    <p id="result"></p>
 
     <div class="picture-box">
       Mystery Picture
@@ -100,6 +102,8 @@
   </div>
 
   <script>
+
+  // 🔊 播放單字發音
   function speakWord() {
     const word = "popular";
 
@@ -109,6 +113,62 @@
 
     window.speechSynthesis.speak(speech);
   }
+
+
+  // 🎤 開始語音辨識
+  function startListening() {
+
+    const SpeechRecognition =
+      window.SpeechRecognition ||
+      window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      document.getElementById("result").textContent =
+        "Sorry, your browser does not support speech recognition.";
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+
+    // 開始聆聽
+    recognition.onstart = function() {
+
+      document.getElementById("result").textContent =
+        "🎤 Listening...";
+
+    };
+
+
+    // 收到辨識結果
+    recognition.onresult = function(event) {
+
+      const spokenWord =
+        event.results[0][0].transcript;
+
+      document.getElementById("result").textContent =
+        "You said: " + spokenWord;
+
+    };
+
+
+    // 發生錯誤
+    recognition.onerror = function(event) {
+
+      document.getElementById("result").textContent =
+        "Please try again.";
+
+    };
+
+
+    recognition.start();
+
+  }
+
 </script>
   
 </body>
