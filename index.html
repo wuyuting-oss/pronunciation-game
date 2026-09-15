@@ -166,7 +166,51 @@
   </div>
 
   <script>
+<script>
 
+  const words = [
+    "popular",
+    "travel",
+    "culture",
+    "snack",
+    "local",
+    "special",
+    "picture",
+    "market",
+    "family",
+    "country",
+    "people",
+    "student",
+    "teacher",
+    "English",
+    "school",
+    "friend",
+    "music",
+    "movie",
+    "happy",
+    "summer",
+    "beautiful",
+    "interesting",
+    "different",
+    "favorite"
+  ];
+
+  let currentWordIndex = 0;
+
+
+  // 🔊 播放單字發音
+  function speakWord() {
+
+    const word = words[currentWordIndex];
+
+    const speech =
+      new SpeechSynthesisUtterance(word);
+
+    speech.lang = "en-US";
+    speech.rate = 0.8;
+
+    window.speechSynthesis.speak(speech);
+  }
   // 🔊 播放單字發音
   function speakWord() {
     const word = words[currentWordIndex];
@@ -287,34 +331,7 @@
   }
 
 </script>
-  const words = [
-  "popular",
-  "travel",
-  "culture",
-  "snack",
-  "local",
-  "special",
-  "picture",
-  "market",
-  "family",
-  "country",
-  "people",
-  "student",
-  "teacher",
-  "English",
-  "school",
-  "friend",
-  "music",
-  "movie",
-  "happy",
-  "summer",
-  "beautiful",
-  "interesting",
-  "different",
-  "favorite"
-];
-
-let currentWordIndex = 0;
+ 
 </body>
 
 </html>
