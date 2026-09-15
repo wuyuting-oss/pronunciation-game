@@ -85,7 +85,7 @@
       popular
     </div>
 
-    <button class="listen-button">
+    <button class="listen-button" onclick="speakWord()">
       🔊 Listen
     </button>
 
@@ -99,6 +99,18 @@
 
   </div>
 
+  <script>
+  function speakWord() {
+    const word = "popular";
+
+    const speech = new SpeechSynthesisUtterance(word);
+    speech.lang = "en-US";
+    speech.rate = 0.8;
+
+    window.speechSynthesis.speak(speech);
+  }
+</script>
+  
 </body>
 
 </html>
