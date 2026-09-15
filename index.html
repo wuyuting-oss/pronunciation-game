@@ -209,7 +209,7 @@
 
 
     // 收到辨識結果
-    recognition.onresult = function(event) {
+   recognition.onresult = function(event) {
 
   const spokenWord =
     event.results[0][0].transcript
@@ -222,6 +222,10 @@
 
     document.getElementById("result").innerHTML =
       "✅ Correct!<br>You said: " + spokenWord;
+
+    // 揭開第一格
+    const covers = document.querySelectorAll(".cover");
+    covers[0].classList.add("revealed");
 
   } else {
 
