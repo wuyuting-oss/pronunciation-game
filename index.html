@@ -195,7 +195,16 @@
   ];
 
   let currentWordIndex = 0;
+// 24格的隨機揭開順序
+const revealOrder = Array.from({ length: 24 }, (_, i) => i);
 
+// 洗牌
+for (let i = revealOrder.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+
+  [revealOrder[i], revealOrder[j]] =
+    [revealOrder[j], revealOrder[i]];
+}
 
   
   // 🔊 播放單字發音
@@ -255,14 +264,16 @@
     "✅ Correct!<br>You said: " + spokenWord;
 
   // 找到24個遮罩
-  const covers = document.querySelectorAll(".cover");
+const covers = document.querySelectorAll(".cover");
 
-  // 揭開目前這一題對應的格子
-  covers[currentWordIndex].classList.add("revealed");
+// 找出這一題要揭開的隨機格子
+const tileIndex = revealOrder[currentWordIndex];
 
-  // 前往下一個單字
-  currentWordIndex++;
+// 揭開這一格
+covers[tileIndex].classList.add("revealed");
 
+// 前往下一個單字
+currentWordIndex++;
   // 如果還有下一題
   if (currentWordIndex < words.length) {
 
